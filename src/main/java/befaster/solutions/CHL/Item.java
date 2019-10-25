@@ -28,5 +28,11 @@ public final class Item {
         Item o = (Item) other;
         return Objects.equals(sku, o.sku) && Objects.equals(price, o.price);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sku, price);
+    }
 }
+
 

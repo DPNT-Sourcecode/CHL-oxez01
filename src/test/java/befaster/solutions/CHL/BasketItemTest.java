@@ -31,4 +31,3 @@ public class BasketItemTest {
         assertThat(item2.equals(item1), equalTo(false));
     }
 }
-

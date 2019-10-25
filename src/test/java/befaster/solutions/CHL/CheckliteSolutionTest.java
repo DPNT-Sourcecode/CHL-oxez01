@@ -2,6 +2,9 @@ package befaster.solutions.CHL;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -18,10 +21,17 @@ public class CheckliteSolutionTest {
     }
 
     @Test
+    public void basketCreatedCorrectly() {
+        BasketItem bi = new BasketItem(new Item("A", 50), 2);
+        Set<BasketItem> basket = new HashSet<>();
+        basket.add(bi);
+        assertThat(checkout.createBasket("AA"), equalTo(basket));
+    }
+
+
+
+    @Test
     public void properInput() {
         assertThat(checkout.checklite("A"), equalTo(50));
     }
 }
-
-
-

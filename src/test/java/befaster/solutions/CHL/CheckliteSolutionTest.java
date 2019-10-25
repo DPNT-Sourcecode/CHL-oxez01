@@ -32,4 +32,3 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("BBBCD"), equalTo(110));
     }
 }
-

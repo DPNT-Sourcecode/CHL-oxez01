@@ -15,5 +15,13 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("ABE"), equalTo(-1));
         assertThat(checkout.checklite("FA"), equalTo(-1));
     }
+
+    @Test
+    public void properInput() {
+        ShopRepo repo = new ShopRepo();
+        CheckliteSolution checkout = new CheckliteSolution(repo, new PricingImpl(repo));
+        assertThat(checkout.checklite("A"), equalTo(50));
+    }
 }
+
 

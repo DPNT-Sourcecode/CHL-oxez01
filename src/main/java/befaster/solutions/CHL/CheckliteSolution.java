@@ -43,6 +43,7 @@ public class CheckliteSolution {
         validSkus.add('C');
         validSkus.add('D');
         validSkus.add('E');
+        validSkus.add('F');
         return validSkus.contains(Character.valueOf((char) c));
     }
 

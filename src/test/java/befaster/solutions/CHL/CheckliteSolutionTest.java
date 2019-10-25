@@ -15,9 +15,9 @@ public class CheckliteSolutionTest {
 
     @Test
     public void illegalInputReturnsMinusOne() {
-        assertThat(checkout.checklite("F"), equalTo(-1));
-        assertThat(checkout.checklite("ABF"), equalTo(-1));
-        assertThat(checkout.checklite("FA"), equalTo(-1));
+        assertThat(checkout.checklite("G"), equalTo(-1));
+        assertThat(checkout.checklite("ABG"), equalTo(-1));
+        assertThat(checkout.checklite("GA"), equalTo(-1));
     }
 
     @Test
@@ -41,6 +41,12 @@ public class CheckliteSolutionTest {
     public void properInputWithFreebies() {
         assertThat(checkout.checklite("BEE"), equalTo(80));
         assertThat(checkout.checklite("BBEE"), equalTo(110));
+    }
+
+    @Test
+    public void properInputWithFreebies2() {
+        assertThat(checkout.checklite("FF"), equalTo(20));
+        assertThat(checkout.checklite("FFF"), equalTo(20));
     }
 
 }

@@ -22,7 +22,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void basketCreatedCorrectly() {
-        BasketItem bi = new BasketItem(new Item("A", 50), 2);
+        BasketItem bi = new BasketItem(repo.getItem("A"), 2);
         Set<BasketItem> basket = new HashSet<>();
         basket.add(bi);
         assertThat(checkout.createBasket("AA"), equalTo(basket));
@@ -35,3 +35,4 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("A"), equalTo(50));
     }
 }
+

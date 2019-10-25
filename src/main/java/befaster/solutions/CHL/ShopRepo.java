@@ -5,15 +5,33 @@ import java.util.Map;
 
 public class ShopRepo {
 
-    Item itemA = new Item("A", 50);
-    MultiItem multiA = new MultiItem(itemA, 3, 130);
-    Item itemB = new Item("B", 30);
-    MultiItem multiB = new MultiItem(itemB, 2, 45);
-    Item itemC = new Item("C", 20);
-    Item itemD = new Item("D", 15);
+    static final Item ITEM_A = new Item("A", 50);
+    static final Item ITEM_B = new Item("B", 30);
+    static final Item ITEM_C = new Item("C", 20);
+    static final Item ITEM_D= new Item("D", 15);
+
+    static final MultiItem MULTI_A = new MultiItem(ITEM_A, 3, 130);
+    static final MultiItem MULTI_B = new MultiItem(ITEM_B, 2, 45);
     //
-    Map<String, Item> items = new HashMap();
-    items.put("A", itemA);
-    Map<String, MultiItem> multiItems = new HashMap();
+    static final Map<String, Item> items = new HashMap();
+    static final Map<String, MultiItem> multiItems = new HashMap();
+
+    static {
+        items.put("A", ITEM_A);
+        items.put("B", ITEM_B);
+        items.put("C", ITEM_C);
+        items.put("D", ITEM_D);
+        //
+        multiItems.put("A", MULTI_A);
+        multiItems.put("B", MULTI_B);
+    }
+
+
+    public Item getItem(String sku) {
+        return items.get(sku);
+    }
+
+
 
 }
+

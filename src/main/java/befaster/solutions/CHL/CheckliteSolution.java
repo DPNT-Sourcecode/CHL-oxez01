@@ -40,6 +40,7 @@ public class CheckliteSolution {
         validSkus.add('B');
         validSkus.add('C');
         validSkus.add('D');
+        validSkus.add('E');
         return validSkus.contains(Character.valueOf((char) c));
     }
 
@@ -52,3 +53,4 @@ public class CheckliteSolution {
         return basket;
     }
 }
+

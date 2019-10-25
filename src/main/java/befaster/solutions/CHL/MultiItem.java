@@ -10,7 +10,7 @@ public class MultiItem {
     public MultiItem(Item item, List<Offer> offers) {
         this.item = item;
         this.offers = new ArrayList<>(offers);
-        Collections.sort(offers);
+        Collections.sort(this.offers);
     }
 
     public int minimumMultiQuantity() {
@@ -53,9 +53,10 @@ public class MultiItem {
 
         @Override
         public int compareTo(Offer o) {
-            return Integer.compare(quantity, o.quantity);
+            return Integer.compare(o.quantity, quantity);
         }
     }
 
 }
+
 

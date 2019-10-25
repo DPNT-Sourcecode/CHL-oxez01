@@ -41,7 +41,7 @@ public class PricingImplTest {
     public void evaluateItemOnMultiOfferWithRemainder() {
         Pricing pricing = new PricingImpl(repo);
         BasketItem bi = new BasketItem(new Item("A", 50), 8);
-        assertThat(pricing.evaluate(bi), equalTo(360));
+        assertThat(pricing.evaluate(bi), equalTo(330));
     }
 
 

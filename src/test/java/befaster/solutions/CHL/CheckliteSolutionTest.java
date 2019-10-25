@@ -35,4 +35,3 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("A"), equalTo(50));
     }
 }
-

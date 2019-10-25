@@ -13,6 +13,10 @@ public class PricingImpl implements Pricing {
         if (repo.isOnMultiOffer(bi.getItem().getSku())) {
             return calculateMultiPrice(bi);
         }
+        return calculateSimplePrice(bi);
+    }
+
+    private int calculateSimplePrice(BasketItem bi) {
         return bi.getQuantity() * bi.getItem().getPrice();
     }
 
@@ -24,6 +28,9 @@ public class PricingImpl implements Pricing {
             total += numberOfMultis * multiItem.getPrice();
             int singlesRemaining = bi.getQuantity() % multiItem.getQuantity();
             total += singlesRemaining * bi.getItem().getPrice();
+        }
+        else {
+            total += calculateSimplePrice(bi);
         }
         return total;
     }

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CheckliteSolution {
 
@@ -16,6 +18,9 @@ public class CheckliteSolution {
         if (!validInput) {
             return -1;
         }
+//        skus.chars().mapToObj(c -> String.valueOf(c))
+//                .collect(Collectors.toMap(Function.identity(), Collectors.counting()));
+
         throw new SolutionNotImplementedException();
     }
 
@@ -29,5 +34,3 @@ public class CheckliteSolution {
     }
 
 }
-
-

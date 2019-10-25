@@ -40,4 +40,3 @@ public class MultiItem {
         return Objects.hash(item, quantity, price);
     }
 }
-

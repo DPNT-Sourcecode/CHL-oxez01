@@ -3,6 +3,7 @@ package befaster.solutions.CHL;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -25,14 +26,16 @@ public class CheckliteSolution {
         }
 
         Set<BasketItem> basket = createBasket(skus);
+
+        adjustBasketForFreebies(basket);
+
         int total = 0;
         for (BasketItem bi : basket) {
             total += pricing.evaluate(bi);
         }
         return total;
-//
-//        throw new SolutionNotImplementedException();
     }
+
 
     private static boolean validSku(int c) {
         Set<Character> validSkus = new HashSet();
@@ -52,5 +55,10 @@ public class CheckliteSolution {
                 .collect(Collectors.toSet());
         return basket;
     }
-}
 
+    private void adjustBasketForFreebies(Set<BasketItem> basket) {
+        Optional<BasketItem> eItem = basket.stream().filter(b -> b.getItem().getSku().equals("E")).findFirst();
+        if (eItem.isPresent() && eItem.get().getQuantity() > 2)
+    }
+
+}

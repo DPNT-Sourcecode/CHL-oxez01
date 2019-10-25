@@ -12,6 +12,13 @@ public class PricingImplTest {
     @Test
     public void evaluateItemNotOnOffer() {
         Pricing pricing = new PricingImpl(repo);
+        BasketItem bi = new BasketItem(new Item("D", 15), 1);
+        assertThat(pricing.evaluate(bi), equalTo(15));
+    }
+
+    @Test
+    public void evaluateItemOnMultiOfferButNotEnoughQunatity() {
+        Pricing pricing = new PricingImpl(repo);
         BasketItem bi = new BasketItem(new Item("A", 50), 2);
         assertThat(pricing.evaluate(bi), equalTo(100));
     }

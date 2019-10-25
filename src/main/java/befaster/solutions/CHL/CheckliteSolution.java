@@ -33,9 +33,9 @@ public class CheckliteSolution {
         for (BasketItem bi : basket) {
             total += pricing.evaluate(bi);
         }
-
-
-        throw new SolutionNotImplementedException();
+        return total;
+//
+//        throw new SolutionNotImplementedException();
     }
 
     private static boolean validSku(int c) {
@@ -48,3 +48,4 @@ public class CheckliteSolution {
     }
 
 }
+

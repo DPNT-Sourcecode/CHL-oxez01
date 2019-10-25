@@ -58,7 +58,16 @@ public class CheckliteSolution {
 
     private void adjustBasketForFreebies(Set<BasketItem> basket) {
         Optional<BasketItem> eItem = basket.stream().filter(b -> b.getItem().getSku().equals("E")).findFirst();
-        if (eItem.isPresent() && eItem.get().getQuantity() > 2)
+        if (eItem.isPresent() && eItem.get().getQuantity() > 2) {
+            Optional<BasketItem> bItem = basket.stream().filter(b -> b.getItem().getSku().equals("B")).findFirst();
+            if (bItem.isPresent()) {
+                BasketItem oldB = bItem.get();
+                int freeBs = oldB.getQuantity() / eItem.get().getQuantity();
+                BasketItem newB = new BasketItem(bItem.get().getItem(), oldB.getQuantity() - freeBs);
+                oldB = newB;
+            }
+        }
     }
 
 }
+

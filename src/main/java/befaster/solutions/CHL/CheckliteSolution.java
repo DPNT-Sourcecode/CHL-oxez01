@@ -44,7 +44,7 @@ public class CheckliteSolution {
     }
 
     Set<BasketItem> createBasket(String skus) {
-        Set<BasketItem> basket = skus.chars().mapToObj(c -> String.valueOf(c))
+        Set<BasketItem> basket = skus.chars().mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
                 .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
@@ -52,3 +52,4 @@ public class CheckliteSolution {
         return basket;
     }
 }
+

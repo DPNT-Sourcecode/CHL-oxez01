@@ -23,4 +23,11 @@ public class PricingImplTest {
         assertThat(pricing.evaluate(bi), equalTo(130));
     }
 
+    @Test
+    public void evaluateItemOnMultiOfferManyTimes() {
+        Pricing pricing = new PricingImpl(repo);
+        BasketItem bi = new BasketItem(new Item("A", 50), 6);
+        assertThat(pricing.evaluate(bi), equalTo(130));
+    }
+
 }

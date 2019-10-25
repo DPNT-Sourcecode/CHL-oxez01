@@ -29,4 +29,3 @@ public class BasketItem {
         return Objects.equals(item, o.item) && Objects.equals(quantity, o.quantity);
     }
 }
-

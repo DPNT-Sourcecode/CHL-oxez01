@@ -34,5 +34,3 @@ public final class Item {
         return Objects.hash(sku, price);
     }
 }
-
-

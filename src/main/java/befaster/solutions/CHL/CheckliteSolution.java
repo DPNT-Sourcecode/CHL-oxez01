@@ -58,6 +58,10 @@ public class CheckliteSolution {
                 }
             }
         }
+        if (map.containsKey("F") && map.get("F").intValue() >= 3) {
+            int freeEs = map.get("F").intValue() / 3;
+            map.put("F", map.get("F") - freeEs);
+        }
 
         Set<BasketItem> basket = map.entrySet().stream()
                 .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
@@ -67,3 +71,4 @@ public class CheckliteSolution {
 
 
 }
+

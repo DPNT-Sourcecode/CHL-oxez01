@@ -40,6 +40,7 @@ public class CheckliteSolutionTest {
     @Test
     public void properInputWithFreebies() {
         assertThat(checkout.checklite("BEE"), equalTo(80));
+        assertThat(checkout.checklite("BBEE"), equalTo(110));
     }
 
 }

@@ -3,6 +3,7 @@ package befaster.solutions.CHL;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
@@ -27,8 +28,6 @@ public class CheckliteSolution {
 
         Set<BasketItem> basket = createBasket(skus);
 
-        adjustBasketForFreebies(basket);
-
         int total = 0;
         for (BasketItem bi : basket) {
             total += pricing.evaluate(bi);
@@ -48,26 +47,24 @@ public class CheckliteSolution {
     }
 
     Set<BasketItem> createBasket(String skus) {
-        Set<BasketItem> basket = skus.chars().mapToObj(c -> String.valueOf((char) c))
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
+        Map<String, Long> map = skus.chars().mapToObj(c -> String.valueOf((char) c))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        if (map.containsKey("E") && map.get("E").intValue() > 2) {
+            if (map.containsKey("B")) {
+                int freeBs = map.get("E").intValue() / 2;
+                if (map.get("B").intValue() > freeBs) {
+                    map.put("B", map.get("B") - freeBs);
+                }
+            }
+        }
+
+        Set<BasketItem> basket = map.entrySet().stream()
                 .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
                 .collect(Collectors.toSet());
         return basket;
     }
 
-    private void adjustBasketForFreebies(Set<BasketItem> basket) {
-        Optional<BasketItem> eItem = basket.stream().filter(b -> b.getItem().getSku().equals("E")).findFirst();
-        if (eItem.isPresent() && eItem.get().getQuantity() > 2) {
-            Optional<BasketItem> bItem = basket.stream().filter(b -> b.getItem().getSku().equals("B")).findFirst();
-            if (bItem.isPresent()) {
-                BasketItem oldB = bItem.get();
-                int freeBs = oldB.getQuantity() / eItem.get().getQuantity();
-                BasketItem newB = new BasketItem(bItem.get().getItem(), oldB.getQuantity() - freeBs);
-                oldB = newB;
-            }
-        }
-    }
 
 }
+
 

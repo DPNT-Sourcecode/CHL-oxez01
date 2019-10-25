@@ -15,8 +15,8 @@ public class CheckliteSolutionTest {
 
     @Test
     public void illegalInputReturnsMinusOne() {
-        assertThat(checkout.checklite("E"), equalTo(-1));
-        assertThat(checkout.checklite("ABE"), equalTo(-1));
+        assertThat(checkout.checklite("F"), equalTo(-1));
+        assertThat(checkout.checklite("ABF"), equalTo(-1));
         assertThat(checkout.checklite("FA"), equalTo(-1));
     }
 

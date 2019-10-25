@@ -21,17 +21,15 @@ public class CheckliteSolutionTest {
     }
 
     @Test
-    public void basketCreatedCorrectly() {
-        BasketItem bi = new BasketItem(repo.getItem("A"), 2);
-        Set<BasketItem> basket = new HashSet<>();
-        basket.add(bi);
-        assertThat(checkout.createBasket("AA"), equalTo(basket));
-    }
-
-
-
-    @Test
     public void properInput() {
         assertThat(checkout.checklite("A"), equalTo(50));
+        assertThat(checkout.checklite("AA"), equalTo(100));
+        assertThat(checkout.checklite("AAA"), equalTo(130));
+        assertThat(checkout.checklite("AB"), equalTo(80));
+        assertThat(checkout.checklite("ABB"), equalTo(95));
+        assertThat(checkout.checklite("AAABB"), equalTo(175));
+        assertThat(checkout.checklite("BBB"), equalTo(75));
+        assertThat(checkout.checklite("BBBCD"), equalTo(110));
     }
 }
+

@@ -53,8 +53,9 @@ public class MultiItem {
 
         @Override
         public int compareTo(Offer o) {
-            return Integer.compare(o.quantity, quantity);
+            return Integer.compare(quantity, o.quantity);
         }
     }
 
 }
+

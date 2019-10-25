@@ -9,11 +9,10 @@ public class CheckliteSolutionTest {
 
     @Test
     public void illegalInputReturnsMinusOne() {
-        CheckliteSolution checkout = new CheckliteSolution(repo, pricing);
+        CheckliteSolution checkout = new CheckliteSolution(new ShopRepo(), new PricingImpl());
         assertThat(checkout.checklite("E"), equalTo(-1));
         assertThat(checkout.checklite("ABE"), equalTo(-1));
         assertThat(checkout.checklite("FA"), equalTo(-1));
 
     }
 }
-

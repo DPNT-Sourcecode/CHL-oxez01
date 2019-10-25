@@ -4,4 +4,3 @@ public interface Pricing {
 
     int evaluate(BasketItem bi);
 }
-

@@ -3,6 +3,8 @@ package befaster;
 import befaster.solutions.ARRS.ArraySumSolution;
 import befaster.solutions.CHK.CheckoutSolution;
 import befaster.solutions.CHL.CheckliteSolution;
+import befaster.solutions.CHL.PricingImpl;
+import befaster.solutions.CHL.ShopRepo;
 import befaster.solutions.FIZ.FizzBuzzSolution;
 import befaster.solutions.HLO.HelloSolution;
 import befaster.solutions.IRNG.IntRangeSolution;
@@ -38,7 +40,7 @@ class EntryPointMapping {
         intRangeSolution = new IntRangeSolution();
         fizzBuzzSolution = new FizzBuzzSolution();
         checkoutSolution = new CheckoutSolution();
-        checkliteSolution = new CheckliteSolution(repo, pricing);
+        checkliteSolution = new CheckliteSolution(new ShopRepo(), new PricingImpl());
     }
 
     Object sum(List<JsonElement> p) {
@@ -73,4 +75,3 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
-

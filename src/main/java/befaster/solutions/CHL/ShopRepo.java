@@ -35,4 +35,7 @@ public class ShopRepo {
         return multiItems.get(sku);
     }
 
+    public boolean isOnMultiOffer(String sku) {
+        return multiItems.containsKey(sku);
+    }
 }

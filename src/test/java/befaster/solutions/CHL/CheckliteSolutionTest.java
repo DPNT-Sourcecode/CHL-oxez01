@@ -7,10 +7,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CheckliteSolutionTest {
 
+    ShopRepo repo = new ShopRepo();
+    CheckliteSolution checkout = new CheckliteSolution(repo, new PricingImpl(repo));
+
     @Test
     public void illegalInputReturnsMinusOne() {
-        ShopRepo repo = new ShopRepo();
-        CheckliteSolution checkout = new CheckliteSolution(repo, new PricingImpl(repo));
         assertThat(checkout.checklite("E"), equalTo(-1));
         assertThat(checkout.checklite("ABE"), equalTo(-1));
         assertThat(checkout.checklite("FA"), equalTo(-1));
@@ -18,10 +19,9 @@ public class CheckliteSolutionTest {
 
     @Test
     public void properInput() {
-        ShopRepo repo = new ShopRepo();
-        CheckliteSolution checkout = new CheckliteSolution(repo, new PricingImpl(repo));
         assertThat(checkout.checklite("A"), equalTo(50));
     }
 }
+
 
 

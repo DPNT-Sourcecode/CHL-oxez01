@@ -23,12 +23,8 @@ public class CheckliteSolution {
         if (!validInput) {
             return -1;
         }
-        Set<BasketItem> basket = skus.chars().mapToObj(c -> String.valueOf(c))
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
-                .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
-                .collect(Collectors.toSet());
 
+        Set<BasketItem> basket = createBasket(skus);
         int total = 0;
         for (BasketItem bi : basket) {
             total += pricing.evaluate(bi);
@@ -47,5 +43,14 @@ public class CheckliteSolution {
         return validSkus.contains(Character.valueOf((char) c));
     }
 
+    Set<BasketItem> createBasket(String skus) {
+        Set<BasketItem> basket = skus.chars().mapToObj(c -> String.valueOf(c))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
+                .collect(Collectors.toSet());
+        return basket;
+    }
 }
+
 

@@ -31,7 +31,10 @@ public class ShopRepo {
         return items.get(sku);
     }
 
-
+    public MultiItem getMultiItem(String sku) {
+        return multiItems.get(sku);
+    }
 
 }
+
 

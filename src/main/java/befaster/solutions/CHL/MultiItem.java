@@ -1,5 +1,6 @@
 package befaster.solutions.CHL;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -11,18 +12,13 @@ public class MultiItem {
 
     public MultiItem(Item item, List<Offer> offers) {
         this.item = item;
-        this.offers = offers;
+        this.offers = new LinkedList<>(offers);
+        Collections.sort(offers);
     }
 
     public List<Offer> getOffers() {
-        return new LinkedList<>(offers);
+        return offers;
     }
-
-    //    public Item getItem() {
-//        return item;
-//    }
-
-
     static class Offer implements Comparable<Offer> {
         private final int quantity;
         private final int price;
@@ -48,9 +44,10 @@ public class MultiItem {
 
         @Override
         public int compareTo(Offer o) {
-            return 0;
+            return Integer.compare(o.quantity, quantity);
         }
     }
 
 }
+
 

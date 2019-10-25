@@ -40,7 +40,7 @@ class EntryPointMapping {
         intRangeSolution = new IntRangeSolution();
         fizzBuzzSolution = new FizzBuzzSolution();
         checkoutSolution = new CheckoutSolution();
-        checkliteSolution = new CheckliteSolution(new ShopRepo(), new PricingImpl(repo));
+        checkliteSolution = new CheckliteSolution(new ShopRepo(), new PricingImpl(new ShopRepo()));
     }
 
     Object sum(List<JsonElement> p) {
@@ -75,3 +75,4 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
+

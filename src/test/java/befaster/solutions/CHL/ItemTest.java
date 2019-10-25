@@ -16,12 +16,21 @@ public class ItemTest {
     }
 
     @Test
-    public void equalsAndHashCodeDifferent() {
+    public void equalsAndHashCodeDifferentPrice() {
         Item item1 = new Item("A", 50);
         Item item2 = new Item("A", 60);
-        assertThat(item1.equals(item2), equalTo(true));
-        assertThat(item2.equals(item1), equalTo(true));
+        assertThat(item1.equals(item2), equalTo(false));
+        assertThat(item2.equals(item1), equalTo(false));
+    }
+
+    @Test
+    public void equalsAndHashCodeDifferentSku() {
+        Item item1 = new Item("B", 60);
+        Item item2 = new Item("A", 60);
+        assertThat(item1.equals(item2), equalTo(false));
+        assertThat(item2.equals(item1), equalTo(false));
     }
 
 }
+
 

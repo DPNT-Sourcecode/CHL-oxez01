@@ -27,8 +27,20 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("AAA"), equalTo(130));
         assertThat(checkout.checklite("AB"), equalTo(80));
         assertThat(checkout.checklite("ABB"), equalTo(95));
-        assertThat(checkout.checklite("AAABB"), equalTo(175));
+
         assertThat(checkout.checklite("BBB"), equalTo(75));
         assertThat(checkout.checklite("BBBCD"), equalTo(110));
     }
+
+    @Test
+    public void properInputWithMultis() {
+        assertThat(checkout.checklite("AAABB"), equalTo(175));
+    }
+
+
+    @Test
+    public void properInputWithFreebies() {
+        assertThat(checkout.checklite("BEE"), equalTo(80));
+    }
+
 }

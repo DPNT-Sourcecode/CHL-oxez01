@@ -1,9 +1,6 @@
 package befaster.solutions.CHL;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class MultiItem {
 
@@ -12,8 +9,12 @@ public class MultiItem {
 
     public MultiItem(Item item, List<Offer> offers) {
         this.item = item;
-        this.offers = new LinkedList<>(offers);
+        this.offers = new ArrayList<>(offers);
         Collections.sort(offers);
+    }
+
+    public int minimumMultiQuantity() {
+        return offers.get(offers.size() - 1).quantity;
     }
 
     public List<Offer> getOffers() {
@@ -26,6 +27,14 @@ public class MultiItem {
         Offer(int quantity, int price) {
             this.quantity = quantity;
             this.price = price;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public int getPrice() {
+            return price;
         }
 
         @Override
@@ -49,5 +58,6 @@ public class MultiItem {
     }
 
 }
+
 
 

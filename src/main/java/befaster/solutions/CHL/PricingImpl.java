@@ -1,5 +1,8 @@
 package befaster.solutions.CHL;
 
+import java.util.Iterator;
+import java.util.List;
+
 public class PricingImpl implements Pricing {
 
     private final ShopRepo repo;
@@ -21,17 +24,27 @@ public class PricingImpl implements Pricing {
     }
 
     private int calculateMultiPrice(BasketItem bi) {
-        int total = 0;
+
         MultiItem multiItem = repo.getMultiItem(bi.getItem().getSku());
-        if (bi.getQuantity() >= multiItem.getQuantity()) {
-            int numberOfMultis = bi.getQuantity() / multiItem.getQuantity();
-            total += numberOfMultis * multiItem.getPrice();
-            int singlesRemaining = bi.getQuantity() % multiItem.getQuantity();
-            total += singlesRemaining * bi.getItem().getPrice();
+        if (bi.getQuantity() < multiItem.minimumMultiQuantity()) {
+            return calculateSimplePrice(bi);
+        } else {
+            int total = 0;
+            int quantity = bi.getQuantity();
+            Iterator<MultiItem.Offer> iterator = multiItem.getOffers().iterator();
+            while (iterator.hasNext()) {
+                MultiItem.Offer next = iterator.next();
+                if (quantity < next.getQuantity() && !iterator.hasNext()) {
+                    total += quantity * bi.getItem().getPrice();
+                    break;
+                }
+                int numberOfMultis = quantity/ next.getQuantity();
+                total += numberOfMultis * next.getPrice();
+                quantity %= next.getQuantity();
+            }
+            return total;
         }
-        else {
-            total += calculateSimplePrice(bi);
-        }
-        return total;
     }
+
 }
+

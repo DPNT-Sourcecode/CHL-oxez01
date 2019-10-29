@@ -22,7 +22,7 @@ public class BogofItem implements  BogofPromotion {
 
     @Override
     public Set<BasketItem> apply(Set<BasketItem> basket) {
-        Map<String, BasketItem> basketAsMap = basket.stream().collect(Collectors.toMap(i -> i.getItem().getSku(), value -> i);
+        Map<String, BasketItem> basketAsMap = basket.stream().collect(Collectors.toMap(i -> i.getItem().getSku(), Function.identity());
         Optional<BasketItem> bi = basket.stream().filter(i -> i.getItem().getSku().equals(item.getSku())).findFirst();
         if (bi.isPresent() && bi.get().getQuantity() >= eligibleQuantity) {
             // if freebie in basket, subtract quantity
@@ -53,4 +53,5 @@ public class BogofItem implements  BogofPromotion {
     }
 
 }
+
 

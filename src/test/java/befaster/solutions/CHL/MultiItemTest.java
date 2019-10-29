@@ -60,4 +60,13 @@ public class MultiItemTest {
         assertThat(MULTI_A.discount(basket), equalTo(70));
     }
 
+    @Test
+    public void calculateDiscountOverMultiples() {
+        // 5 + 3 + 1 == discount 70
+        BasketItem a1 = new BasketItem(ITEM_A, 10);
+        Set<BasketItem> basket = Sets.newHashSet(a1);
+        assertThat(MULTI_A.discount(basket), equalTo(100));
+    }
+
 }
+

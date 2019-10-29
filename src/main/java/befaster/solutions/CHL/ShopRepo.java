@@ -88,7 +88,7 @@ public class ShopRepo {
         items.put("K", ITEM_K);
         items.put("L", ITEM_L);
         items.put("M", ITEM_M);
-        items.put("M", ITEM_N);
+        items.put("N", ITEM_N);
         items.put("O", ITEM_O);
         items.put("P", ITEM_P);
         items.put("Q", ITEM_Q);
@@ -134,3 +134,4 @@ public class ShopRepo {
     }
 
 }
+

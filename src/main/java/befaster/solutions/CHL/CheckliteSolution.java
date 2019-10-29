@@ -6,13 +6,17 @@ import java.util.stream.Collectors;
 
 public class CheckliteSolution {
 
-
+    private final Set<Character> validSkus;
     private final ShopRepo repo;
     private final Pricing pricing;
     private final List<Promotion> promotions;
     private final List<BogofPromotion> freebies;
 
     public CheckliteSolution(ShopRepo repo, Pricing pricing, List<Promotion> promotions, List<BogofPromotion> freebies) {
+        validSkus = new HashSet();
+        for (char all = 'A'; c <= 'Z' ; all++) {
+            validSkus.add(all);
+        }
         this.repo = repo;
         this.pricing = pricing;
         this.promotions = promotions;
@@ -41,14 +45,7 @@ public class CheckliteSolution {
     }
 
 
-    private static boolean validSku(int c) {
-        Set<Character> validSkus = new HashSet();
-        validSkus.add('A');
-        validSkus.add('B');
-        validSkus.add('C');
-        validSkus.add('D');
-        validSkus.add('E');
-        validSkus.add('F');
+    private boolean validSku(int c) {
         return validSkus.contains(Character.valueOf((char) c));
     }
 
@@ -78,4 +75,5 @@ public class CheckliteSolution {
 
 
 }
+
 

@@ -31,7 +31,6 @@ public class BogofItem implements BogofPromotion {
                 BasketItem newFreebie = new BasketItem(freebie, Math.max(0, freebiebi.getQuantity() - freebieQuantity));
                 basketAsMap.replace(freebie.getSku(), newFreebie);
             }
-            // suboptimal
             return new HashSet<>(basketAsMap.values());
         }
         return basket;

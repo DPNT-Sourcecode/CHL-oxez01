@@ -55,9 +55,10 @@ public class CheckliteSolutionTest {
 
     @Test
     public void properInputWithFreebies2() {
-        assertThat(checkout.checklite("FF"), equalTo(20));
+        assertThat(checkout.checklite("FF"), equalTo(10));
         assertThat(checkout.checklite("FFF"), equalTo(20));
     }
 
 }
+
 

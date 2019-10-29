@@ -1,9 +1,8 @@
 package befaster.solutions.CHL;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class BogofItem implements  BogofPromotion {
 
@@ -23,12 +22,14 @@ public class BogofItem implements  BogofPromotion {
 
     @Override
     public Set<BasketItem> apply(Set<BasketItem> basket) {
+        Map<String, BasketItem> basketAsMap = basket.stream().collect(Collectors.toMap(i -> i.getItem().getSku(), value -> i);
         Optional<BasketItem> bi = basket.stream().filter(i -> i.getItem().getSku().equals(item.getSku())).findFirst();
         if (bi.isPresent() && bi.get().getQuantity() >= eligibleQuantity) {
             // if freebie in basket, subtract quantity
             Optional<BasketItem> freebi = basket.stream().filter(i -> i.getItem().getSku().equals(freebie.getSku())).findFirst();
             if (freebi.isPresent()) {
                 BasketItem newItem = new BasketItem(freebie, Math.max(0, freebi.get().getQuantity() - freebieQuantity));
+//                basket.iterator().remove(freebi.get());
             }
         }
         Set<BasketItem> newBasket = new HashSet<>();
@@ -52,3 +53,4 @@ public class BogofItem implements  BogofPromotion {
     }
 
 }
+

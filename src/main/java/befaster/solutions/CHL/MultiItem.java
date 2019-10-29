@@ -33,7 +33,7 @@ public class MultiItem implements VolumePromotion {
                 MultiItem.Offer next = iterator.next();
                 int numberOfMultis = quantity / next.getQuantity();
                 if (numberOfMultis > 0) {
-                    totalDiscount += next.quantity * item.getPrice() - next.getPrice();
+                    totalDiscount += (next.quantity * item.getPrice() - next.getPrice()) * numberOfMultis;
                 }
                 quantity %= next.getQuantity();
             }
@@ -80,3 +80,4 @@ public class MultiItem implements VolumePromotion {
     }
 
 }
+

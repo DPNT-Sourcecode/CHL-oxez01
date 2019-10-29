@@ -4,7 +4,8 @@ import java.util.Set;
 
 public interface Offer {
 
-    int discount(Set<BasketItem> basket);
+    int dicount(Set<BasketItem> basket);
 }
+
 
 

@@ -14,10 +14,10 @@ public class ShopRepo {
     static final Item ITEM_E = new Item("D", 40);
     static final Item ITEM_F = new Item("F", 10);
 
-    static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5), price);
+    static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5));
     //
     static final MultiItem.Offer offerB2 = new MultiItem.Offer(2, 45);
-    static final MultiItem MULTI_B = new MultiItem(ITEM_B, Lists.newArrayList(offerB2), price);
+    static final MultiItem MULTI_B = new MultiItem(ITEM_B, Lists.newArrayList(offerB2));
     //
     static final Map<String, Item> items = new HashMap();
     static final Map<String, MultiItem> multiItems = new HashMap();
@@ -47,5 +47,6 @@ public class ShopRepo {
         return multiItems.containsKey(sku);
     }
 }
+
 
 

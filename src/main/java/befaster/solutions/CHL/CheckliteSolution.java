@@ -47,6 +47,8 @@ public class CheckliteSolution {
     Set<BasketItem> createBasket(String skus) {
         Map<String, Long> map = skus.chars().mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+
         if (map.containsKey("E") && map.get("E").intValue() >= 2) {
             if (map.containsKey("B")) {
                 int freeBs = map.get("E").intValue() / 2;
@@ -68,5 +70,3 @@ public class CheckliteSolution {
 
 
 }
-
-

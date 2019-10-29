@@ -10,11 +10,13 @@ public class CheckliteSolution {
     private final ShopRepo repo;
     private final Pricing pricing;
     private final List<Promotion> promotions;
+    private final List<BogofPromotion> freebies;
 
-    public CheckliteSolution(ShopRepo repo, Pricing pricing, List<Promotion> promotions) {
+    public CheckliteSolution(ShopRepo repo, Pricing pricing, List<Promotion> promotions, List<BogofPromotion> freebies) {
         this.repo = repo;
         this.pricing = pricing;
         this.promotions = promotions;
+        this.freebies = freebies;
     }
 
     public Integer checklite(String skus) {
@@ -24,10 +26,16 @@ public class CheckliteSolution {
         }
         Set<BasketItem> basket = createBasket(skus);
 
-        // calculate without discount
-        int total = basket.stream().map(pricing::evaluate).mapToInt(Integer::intValue).sum();
+        // first apply freebies
+        for (BogofPromotion bogof: freebies) {
+            basket = bogof.apply(basket);
+        }
+        final Set<BasketItem> newBasket = new HashSet<>(basket);
 
-        int totalDiscount = promotions.stream().map(i -> i.discount(basket)).mapToInt(Integer::intValue).sum();
+        // calculate without discount
+        int total = newBasket.stream().map(pricing::evaluate).mapToInt(Integer::intValue).sum();
+
+        int totalDiscount = promotions.stream().map(i -> i.discount(newBasket)).mapToInt(Integer::intValue).sum();
 
         return total - totalDiscount;
     }
@@ -49,18 +57,18 @@ public class CheckliteSolution {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
 
-        if (map.containsKey("E") && map.get("E").intValue() >= 2) {
-            if (map.containsKey("B")) {
-                int freeBs = map.get("E").intValue() / 2;
-                if (map.get("B").intValue() >= freeBs) {
-                    map.put("B", map.get("B") - freeBs);
-                }
-            }
-        }
-        if (map.containsKey("F") && map.get("F").intValue() >= 3) {
-            int freeEs = map.get("F").intValue() / 3;
-            map.put("F", map.get("F") - freeEs);
-        }
+//        if (map.containsKey("E") && map.get("E").intValue() >= 2) {
+//            if (map.containsKey("B")) {
+//                int freeBs = map.get("E").intValue() / 2;
+//                if (map.get("B").intValue() >= freeBs) {
+//                    map.put("B", map.get("B") - freeBs);
+//                }
+//            }
+//        }
+//        if (map.containsKey("F") && map.get("F").intValue() >= 3) {
+//            int freeEs = map.get("F").intValue() / 3;
+//            map.put("F", map.get("F") - freeEs);
+//        }
 
         Set<BasketItem> basket = map.entrySet().stream()
                 .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
@@ -70,3 +78,4 @@ public class CheckliteSolution {
 
 
 }
+

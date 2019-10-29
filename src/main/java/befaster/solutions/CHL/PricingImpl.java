@@ -34,10 +34,6 @@ public class PricingImpl implements Pricing {
             Iterator<MultiItem.Offer> iterator = multiItem.getOffers().iterator();
             while (iterator.hasNext()) {
                 MultiItem.Offer next = iterator.next();
-//                if (quantity < next.getQuantity() && !iterator.hasNext()) {
-//                    total += quantity * bi.getItem().getPrice();
-//                    break;
-//                }
                 int numberOfMultis = quantity / next.getQuantity();
                 total += numberOfMultis * next.getPrice();
                 quantity %= next.getQuantity();
@@ -47,3 +43,4 @@ public class PricingImpl implements Pricing {
     }
 
 }
+

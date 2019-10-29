@@ -1,6 +1,8 @@
 package befaster.solutions.CHL;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class BogofItem implements  BogofPromotion {
@@ -18,6 +20,22 @@ public class BogofItem implements  BogofPromotion {
         this.freebieQuantity = freebieQuantity;
     }
 
+
+    @Override
+    public Set<BasketItem> apply(Set<BasketItem> basket) {
+        Optional<BasketItem> bi = basket.stream().filter(i -> i.getItem().getSku().equals(item.getSku())).findFirst();
+        if (bi.isPresent() && bi.get().getQuantity() >= eligibleQuantity) {
+            // if freebie in basket, subtract quantity
+            Optional<BasketItem> freebi = basket.stream().filter(i -> i.getItem().getSku().equals(freebie.getSku())).findFirst();
+            if (freebi.isPresent()) {
+                BasketItem newItem = new BasketItem(freebie, Math.max(0, freebi.get().getQuantity() - freebieQuantity));
+            }
+        }
+        Set<BasketItem> newBasket = new HashSet<>();
+        return null;
+    }
+
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof BogofItem)) {
@@ -33,9 +51,4 @@ public class BogofItem implements  BogofPromotion {
         return Objects.hash(item, eligibleQuantity, freebie, freebieQuantity);
     }
 
-
-    @Override
-    public Set<BasketItem> apply(Set<BasketItem> basket) {
-        return null;
-    }
 }

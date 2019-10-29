@@ -16,7 +16,7 @@ public class CheckliteSolutionTest {
     @BeforeClass
     public static void setupShop() {
         ShopRepo repo = new ShopRepo();
-        checkout = new CheckliteSolution(repo, new PricingImpl(repo));
+        checkout = new CheckliteSolution(repo);
     }
 
     @Test
@@ -56,6 +56,3 @@ public class CheckliteSolutionTest {
     }
 
 }
-
-
-

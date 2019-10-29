@@ -9,24 +9,48 @@ public class MultiItem implements Offer {
 
     private final Item item;
     private final int eligibleQuantity;
+    private final int price;
 
-    public MultiItem(Item item, int eligibleQuantity) {
+    public MultiItem(Item item, int eligibleQuantity, int price) {
         this.item = item;
         this.eligibleQuantity = eligibleQuantity;
+        this.price = price;
     }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public int getEligibleQuantity() {
-        return eligibleQuantity;
-    }
+//
+//    public Item getItem() {
+//        return item;
+//    }
+//
+//    public int getEligibleQuantity() {
+//        return eligibleQuantity;
+//    }
 
     @Override
-    public int dicount(Set<BasketItem> basket) {
+    public int discount(Set<BasketItem> basket) {
+        Optional<BasketItem> bi = basket.stream().filter(i -> i.getItem().getSku().equals(item.getSku())).findFirst();
+        if (bi.isPresent() && bi.get().getQuantity() >= eligibleQuantity) {
+            // calculate the discount
+            int quantity = bi.get().getQuantity();
+            int numberOfMultis = quantity / eligibleQuantity;
+
+
+        }
+        // else no discount
+        return 0;
+//            int total = 0;
+//            int quantity = bi.getQuantity();
+//            Iterator<MultiItem.Offer> iterator = multiItem.getOffers().iterator();
+//            while (iterator.hasNext()) {
+//                MultiItem.Offer next = iterator.next();
+//                int numberOfMultis = quantity / next.getQuantity();
+//                total += numberOfMultis * next.getPrice();
+//                quantity %= next.getQuantity();
+//            }
+//            return total +  quantity * bi.getItem().getPrice();
+//        }
         return 0;
     }
 }
+
 
 

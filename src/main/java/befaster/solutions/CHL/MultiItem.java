@@ -25,14 +25,16 @@ public class MultiItem implements Promotion {
     public int discount(Set<BasketItem> basket) {
         // check if basket contains item and if it does calculate the notional discount
         Optional<BasketItem> bi = basket.stream().filter(i -> i.getItem().getSku().equals(item.getSku())).findAny();
-        if (bi.isPresent() && bi.get().getQuantity() > minimumMultiQuantity()) {
+        if (bi.isPresent() && bi.get().getQuantity() >= minimumMultiQuantity()) {
             int quantity = bi.get().getQuantity();
             int totalDiscount = 0;
             Iterator<Offer> iterator = offers.iterator();
             while (iterator.hasNext()) {
                 MultiItem.Offer next = iterator.next();
                 int numberOfMultis = quantity / next.getQuantity();
-                totalDiscount += next.getPrice() - numberOfMultis * item.getPrice();
+                if(numberOfMultis > 0) {
+                    totalDiscount += next.getPrice() - numberOfMultis * item.getPrice();
+                }
                 quantity %= next.getQuantity();
             }
             return totalDiscount;
@@ -78,6 +80,7 @@ public class MultiItem implements Promotion {
     }
 
 }
+
 
 
 

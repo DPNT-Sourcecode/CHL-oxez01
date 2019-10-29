@@ -26,7 +26,7 @@ public class ShopRepo {
     static final Item ITEM_O = new Item("O", 10);
     static final Item ITEM_P = new Item("P", 50);
     static final Item ITEM_Q = new Item("Q", 30);
-    static final Item ITEM_R = new Item("R", 30);
+    static final Item ITEM_R = new Item("R", 50);
 
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
@@ -47,6 +47,11 @@ public class ShopRepo {
     //
     static final MultiItem.Offer offerQ3 = new MultiItem.Offer(3, 80);
     static final MultiItem MULTI_Q = new MultiItem(ITEM_Q, Lists.newArrayList(offerQ3));
+
+
+    static final BogofPromotion freebieForE = new BogofItem(ITEM_E, 2, ITEM_B, 1);
+    static final BogofPromotion freebieForF = new BogofItem(ITEM_F, 2, ITEM_F, 1);
+    static final BogofPromotion freebieForN = new BogofItem(ITEM_N, 3, ITEM_M, 1);
 
 
     static final Map<String, Item> items = new HashMap();
@@ -70,7 +75,7 @@ public class ShopRepo {
         items.put("O", ITEM_O);
         items.put("P", ITEM_P);
         items.put("Q", ITEM_Q);
-        items.put("Q", ITEM_R);
+        items.put("R", ITEM_R);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
@@ -84,6 +89,10 @@ public class ShopRepo {
         return new ArrayList<>(multiItems.values());
     }
 
+//    public List<Promotion> freebiePromotions() {
+//        return new ArrayList<>(multiItems.values());
+//    }
+
     public Item getItem(String sku) {
         return items.get(sku);
     }
@@ -93,6 +102,7 @@ public class ShopRepo {
     }
 
 }
+
 
 
 

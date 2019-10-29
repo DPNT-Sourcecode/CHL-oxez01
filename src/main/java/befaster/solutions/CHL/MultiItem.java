@@ -4,14 +4,29 @@ import java.util.*;
 
 public class MultiItem implements Offer {
 
-    private final Item item;
-    private final List<Offer> offers;
+//    static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
+//    static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
 
-    public MultiItem(Item item, List<Offer> offers) {
+    private final Item item;
+    private final int eligibleQuantity;
+
+    public MultiItem(Item item, int eligibleQuantity) {
         this.item = item;
-        this.offers = new ArrayList<>(offers);
-        Collections.sort(this.offers);
+        this.eligibleQuantity = eligibleQuantity;
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    public int getEligibleQuantity() {
+        return eligibleQuantity;
+    }
+
+    @Override
+    public int dicount(Set<BasketItem> basket) {
+        return 0;
+    }
 }
+
 

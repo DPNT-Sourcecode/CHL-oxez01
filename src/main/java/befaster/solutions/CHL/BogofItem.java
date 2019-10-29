@@ -54,6 +54,3 @@ public class BogofItem implements BogofPromotion {
         }
 
     }
-
-
-

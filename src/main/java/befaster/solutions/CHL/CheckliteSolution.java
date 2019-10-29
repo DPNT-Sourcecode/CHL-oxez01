@@ -14,7 +14,7 @@ public class CheckliteSolution {
 
     public CheckliteSolution(ShopRepo repo, Pricing pricing, List<Promotion> promotions, List<BogofPromotion> freebies) {
         validSkus = new HashSet();
-        for (char all = 'A'; c <= 'Z' ; all++) {
+        for (char all = 'A'; all <= 'F' ; all++) {
             validSkus.add(all);
         }
         this.repo = repo;
@@ -34,6 +34,7 @@ public class CheckliteSolution {
         for (BogofPromotion bogof: freebies) {
             basket = bogof.apply(basket);
         }
+        // can do better
         final Set<BasketItem> newBasket = new HashSet<>(basket);
 
         // calculate without discount
@@ -53,20 +54,6 @@ public class CheckliteSolution {
         Map<String, Long> map = skus.chars().mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-
-//        if (map.containsKey("E") && map.get("E").intValue() >= 2) {
-//            if (map.containsKey("B")) {
-//                int freeBs = map.get("E").intValue() / 2;
-//                if (map.get("B").intValue() >= freeBs) {
-//                    map.put("B", map.get("B") - freeBs);
-//                }
-//            }
-//        }
-//        if (map.containsKey("F") && map.get("F").intValue() >= 3) {
-//            int freeEs = map.get("F").intValue() / 3;
-//            map.put("F", map.get("F") - freeEs);
-//        }
-
         Set<BasketItem> basket = map.entrySet().stream()
                 .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
                 .collect(Collectors.toSet());
@@ -75,5 +62,6 @@ public class CheckliteSolution {
 
 
 }
+
 
 

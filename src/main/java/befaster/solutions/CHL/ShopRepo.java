@@ -22,6 +22,7 @@ public class ShopRepo {
     static final Item ITEM_M = new Item("M", 15);
     static final Item ITEM_N = new Item("N", 40);
     static final Item ITEM_O = new Item("O", 10);
+    static final Item ITEM_P = new Item("P", 50);
 
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
@@ -36,6 +37,9 @@ public class ShopRepo {
     //
     static final MultiItem.Offer offerK2 = new MultiItem.Offer(2, 150);
     static final MultiItem MULTI_K = new MultiItem(ITEM_K, Lists.newArrayList(offerK2));
+    //
+    static final MultiItem.Offer offerP5 = new MultiItem.Offer(5, 200);
+    static final MultiItem MULTI_P = new MultiItem(ITEM_P, Lists.newArrayList(offerP5));
 
 
     static final Map<String, Item> items = new HashMap();
@@ -57,11 +61,13 @@ public class ShopRepo {
         items.put("M", ITEM_M);
         items.put("M", ITEM_N);
         items.put("O", ITEM_O);
+        items.put("P", ITEM_P);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
         multiItems.put("H", MULTI_H);
         multiItems.put("K", MULTI_K);
+        multiItems.put("P", MULTI_P);
     }
 
 
@@ -74,5 +80,6 @@ public class ShopRepo {
     }
 
 }
+
 
 

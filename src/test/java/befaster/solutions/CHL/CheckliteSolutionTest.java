@@ -1,8 +1,11 @@
 package befaster.solutions.CHL;
 
+import com.google.common.collect.Lists;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -10,8 +13,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CheckliteSolutionTest {
 
-    ShopRepo repo = new ShopRepo();
-    CheckliteSolution checkout = new CheckliteSolution(repo, new PricingImpl(repo));
+    private static CheckliteSolution checkout;
+
+    @BeforeClass
+    public static void setupShop() {
+        ShopRepo repo = new ShopRepo();
+        List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"));
+        checkout = new CheckliteSolution(repo, new PricingImpl(repo), promotions);
+    }
 
     @Test
     public void illegalInputReturnsMinusOne() {

@@ -13,7 +13,7 @@ public class CheckliteSolution {
 
     public CheckliteSolution(ShopRepo repo) {
         validSkus = new HashSet();
-        for (char all = 'A'; all <= 'F' ; all++) {
+        for (char all = 'A'; all <= 'Z' ; all++) {
             validSkus.add(all);
         }
         this.repo = repo;
@@ -60,3 +60,4 @@ public class CheckliteSolution {
 
 
 }
+

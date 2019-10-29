@@ -31,6 +31,7 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("A"), equalTo(50));
         assertThat(checkout.checklite("AA"), equalTo(100));
         assertThat(checkout.checklite("AB"), equalTo(80));
+        assertThat(checkout.checklite("AB"), equalTo(80));
     }
 
     @Test
@@ -42,8 +43,12 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("AAA"), equalTo(130));
     }
 
-
     @Test
+    public void failedInitially() {
+        assertThat(checkout.checklite("AAAAAAAAAA"), equalTo(400));
+    }
+
+        @Test
     public void properInputWithFreebies() {
         assertThat(checkout.checklite("BEE"), equalTo(80));
         assertThat(checkout.checklite("BBEE"), equalTo(110));

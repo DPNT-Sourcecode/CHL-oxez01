@@ -13,6 +13,8 @@ public class ShopRepo {
     static final Item ITEM_D = new Item("D", 15);
     static final Item ITEM_E = new Item("D", 40);
     static final Item ITEM_F = new Item("F", 10);
+    static final Item ITEM_G = new Item("G", 20);
+    static final Item ITEM_H = new Item("H", 10);
 
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
@@ -21,6 +23,11 @@ public class ShopRepo {
     static final MultiItem.Offer offerB2 = new MultiItem.Offer(2, 45);
     static final MultiItem MULTI_B = new MultiItem(ITEM_B, Lists.newArrayList(offerB2));
     //
+    static final MultiItem.Offer offerH5 = new MultiItem.Offer(5, 130);
+    static final MultiItem.Offer offerH10 = new MultiItem.Offer(10, 200);
+    static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5));
+
+
     static final Map<String, Item> items = new HashMap();
     static final Map<String, MultiItem> multiItems = new HashMap();
 
@@ -31,6 +38,8 @@ public class ShopRepo {
         items.put("D", ITEM_D);
         items.put("E", ITEM_E);
         items.put("F", ITEM_F);
+        items.put("G", ITEM_G);
+        items.put("H", ITEM_H);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
@@ -45,7 +54,4 @@ public class ShopRepo {
         return multiItems.get(sku);
     }
 
-    public boolean isOnMultiOffer(String sku) {
-        return multiItems.containsKey(sku);
-    }
 }

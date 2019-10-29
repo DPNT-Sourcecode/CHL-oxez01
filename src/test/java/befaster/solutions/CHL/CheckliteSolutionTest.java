@@ -25,9 +25,9 @@ public class CheckliteSolutionTest {
 
     @Test
     public void illegalInputReturnsMinusOne() {
-        assertThat(checkout.checklite("G"), equalTo(-1));
-        assertThat(checkout.checklite("ABG"), equalTo(-1));
-        assertThat(checkout.checklite("GA"), equalTo(-1));
+        assertThat(checkout.checklite("%"), equalTo(-1));
+        assertThat(checkout.checklite("*"), equalTo(-1));
+        assertThat(checkout.checklite("="), equalTo(-1));
     }
 
     @Test
@@ -60,5 +60,3 @@ public class CheckliteSolutionTest {
     }
 
 }
-
-

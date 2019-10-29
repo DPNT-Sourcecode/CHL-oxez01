@@ -20,12 +20,20 @@ public class BogofItem implements  BogofPromotion {
 
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof MultiItem.Offer)) {
+        if (!(other instanceof BogofItem)) {
             return false;
         }
-        MultiItem.Offer o = (MultiItem.Offer) other;
-        return Objects.equals(quantity, o.quantity) && Objects.equals(price, o.price);
+        BogofItem o = (BogofItem) other;
+        return Objects.equals(item, o.item) && Objects.equals(eligibleQuantity, o.eligibleQuantity)
+                && Objects.equals(freebie, o.freebie) && Objects.equals(freebieQuantity, o.freebieQuantity);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(item, eligibleQuantity, freebie, freebieQuantity);
+    }
+
+
     @Override
     public Set<BasketItem> apply(Set<BasketItem> basket) {
         return null;

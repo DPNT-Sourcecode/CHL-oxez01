@@ -2,7 +2,7 @@ package befaster.solutions.CHL;
 
 import java.util.*;
 
-public class MultiItem {
+public class MultiItem implements Promotion {
 
     private final Item item;
     private final List<Offer> offers;
@@ -20,6 +20,14 @@ public class MultiItem {
     public List<Offer> getOffers() {
         return offers;
     }
+
+    @Override
+    public int discount(Set<BasketItem> basket) {
+        // check if basket contains item and if it does calculate the notional discount
+        basket.stream().filter(i -> i.getItem().getSku())
+        return 0;
+    }
+
     static class Offer implements Comparable<Offer> {
         private final int quantity;
         private final int price;
@@ -58,3 +66,4 @@ public class MultiItem {
     }
 
 }
+

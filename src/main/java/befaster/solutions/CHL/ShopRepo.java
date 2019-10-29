@@ -18,6 +18,10 @@ public class ShopRepo {
     static final Item ITEM_I = new Item("I", 35);
     static final Item ITEM_J = new Item("J", 60);
     static final Item ITEM_K = new Item("K", 80);
+    static final Item ITEM_L = new Item("L", 90);
+    static final Item ITEM_M = new Item("M", 15);
+    static final Item ITEM_N = new Item("N", 40);
+    static final Item ITEM_O = new Item("O", 10);
 
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
@@ -49,6 +53,10 @@ public class ShopRepo {
         items.put("I", ITEM_I);
         items.put("J", ITEM_J);
         items.put("K", ITEM_K);
+        items.put("L", ITEM_L);
+        items.put("M", ITEM_M);
+        items.put("M", ITEM_N);
+        items.put("O", ITEM_O);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
@@ -66,4 +74,5 @@ public class ShopRepo {
     }
 
 }
+
 

@@ -9,18 +9,18 @@ public class CheckliteSolution {
     private final Set<Character> validSkus;
     private final ShopRepo repo;
     private final Pricing pricing;
-    private final List<Promotion> promotions;
+    private final List<VolumePromotion> promotions;
     private final List<BogofPromotion> freebies;
 
-    public CheckliteSolution(ShopRepo repo, Pricing pricing, List<Promotion> promotions, List<BogofPromotion> freebies) {
+    public CheckliteSolution(ShopRepo repo, Pricing pricing) {
         validSkus = new HashSet();
         for (char all = 'A'; all <= 'F' ; all++) {
             validSkus.add(all);
         }
         this.repo = repo;
         this.pricing = pricing;
-        this.promotions = promotions;
-        this.freebies = freebies;
+        this.promotions = repo.volumePromotions();
+        this.freebies = repo.freebiePromotions();
     }
 
     public Integer checklite(String skus) {
@@ -62,3 +62,4 @@ public class CheckliteSolution {
 
 
 }
+

@@ -2,12 +2,13 @@ package befaster;
 
 import befaster.solutions.ARRS.ArraySumSolution;
 import befaster.solutions.CHK.CheckoutSolution;
-import befaster.solutions.CHL.*;
+import befaster.solutions.CHL.CheckliteSolution;
+import befaster.solutions.CHL.PricingImpl;
+import befaster.solutions.CHL.ShopRepo;
 import befaster.solutions.FIZ.FizzBuzzSolution;
 import befaster.solutions.HLO.HelloSolution;
 import befaster.solutions.IRNG.IntRangeSolution;
 import befaster.solutions.SUM.SumSolution;
-import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ class EntryPointMapping {
         intRangeSolution = new IntRangeSolution();
         fizzBuzzSolution = new FizzBuzzSolution();
         checkoutSolution = new CheckoutSolution();
-        checkliteSolution = new CheckliteSolution(new ShopRepo());
+        checkliteSolution = new CheckliteSolution(new ShopRepo(), new PricingImpl(new ShopRepo()));
     }
 
     Object sum(List<JsonElement> p) {

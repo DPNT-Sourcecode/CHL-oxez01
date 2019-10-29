@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class BogofItemTest {
 
     static final Item ITEM_A = new Item("A", 50);
-    static final Item ITEM_B = new Item("A", 30);
+    static final Item ITEM_B = new Item("B", 30);
 
     @Test
     public void equalsAndHashCodeFreebieSame() {

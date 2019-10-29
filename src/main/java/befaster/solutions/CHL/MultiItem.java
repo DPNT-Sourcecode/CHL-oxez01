@@ -80,10 +80,3 @@ public class MultiItem implements Promotion {
     }
 
 }
-
-
-
-
-
-
-

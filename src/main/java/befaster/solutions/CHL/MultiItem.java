@@ -2,7 +2,7 @@ package befaster.solutions.CHL;
 
 import java.util.*;
 
-public class MultiItem implements VolumePromotion {
+public class MultiItem {
 
     private final Item item;
     private final List<Offer> offers;
@@ -20,28 +20,6 @@ public class MultiItem implements VolumePromotion {
     public List<Offer> getOffers() {
         return offers;
     }
-
-    @Override
-    public int discount(Set<BasketItem> basket) {
-        // check if basket contains item and if it does calculate the notional discount
-        Optional<BasketItem> bi = basket.stream().filter(i -> i.getItem().getSku().equals(item.getSku())).findAny();
-        if (bi.isPresent() && bi.get().getQuantity() >= minimumMultiQuantity()) {
-            int quantity = bi.get().getQuantity();
-            int totalDiscount = 0;
-            Iterator<Offer> iterator = offers.iterator();
-            while (iterator.hasNext()) {
-                MultiItem.Offer next = iterator.next();
-                int numberOfMultis = quantity / next.getQuantity();
-                if (numberOfMultis > 0) {
-                    totalDiscount += (next.quantity * item.getPrice() - next.getPrice()) * numberOfMultis;
-                }
-                quantity %= next.getQuantity();
-            }
-            return totalDiscount;
-        }
-        return 0;
-    }
-
     static class Offer implements Comparable<Offer> {
         private final int quantity;
         private final int price;
@@ -80,4 +58,3 @@ public class MultiItem implements VolumePromotion {
     }
 
 }
-

@@ -1,24 +1,23 @@
 package befaster.solutions.CHL;
 
-import java.util.*;
+import befaster.runner.SolutionNotImplementedException;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CheckliteSolution {
 
-    private final Set<Character> validSkus;
-    private final ShopRepo repo;
-    private final List<VolumePromotion> promotions;
-    private final List<BogofPromotion> freebies;
 
-    public CheckliteSolution(ShopRepo repo) {
-        validSkus = new HashSet();
-        for (char all = 'A'; all <= 'Z' ; all++) {
-            validSkus.add(all);
-        }
+    private final ShopRepo repo;
+    private final Pricing pricing;
+
+    public CheckliteSolution(ShopRepo repo, Pricing pricing) {
         this.repo = repo;
-        this.promotions = repo.volumePromotions();
-        this.freebies = repo.freebiePromotions();
+        this.pricing = pricing;
     }
 
     public Integer checklite(String skus) {
@@ -28,29 +27,40 @@ public class CheckliteSolution {
         }
         Set<BasketItem> basket = createBasket(skus);
 
-        // first apply freebies
-        for (BogofPromotion bogof: freebies) {
-            basket = bogof.apply(basket);
+        int total = 0;
+        for (BasketItem bi : basket) {
+            total += pricing.evaluate(bi);
         }
-        // can do better
-        final Set<BasketItem> newBasket = new HashSet<>(basket);
-
-        // calculate without discount
-        int total = newBasket.stream().map(bi -> bi.getQuantity() * bi.getItem().getPrice()).mapToInt(Integer::intValue).sum();
-
-        int totalDiscount = promotions.stream().map(i -> i.discount(newBasket)).mapToInt(Integer::intValue).sum();
-
-        return total - totalDiscount;
+        return total;
     }
 
 
-    private boolean validSku(int c) {
+    private static boolean validSku(int c) {
+        Set<Character> validSkus = new HashSet();
+        validSkus.add('A');
+        validSkus.add('B');
+        validSkus.add('C');
+        validSkus.add('D');
+        validSkus.add('E');
+        validSkus.add('F');
         return validSkus.contains(Character.valueOf((char) c));
     }
 
     Set<BasketItem> createBasket(String skus) {
         Map<String, Long> map = skus.chars().mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        if (map.containsKey("E") && map.get("E").intValue() >= 2) {
+            if (map.containsKey("B")) {
+                int freeBs = map.get("E").intValue() / 2;
+                if (map.get("B").intValue() >= freeBs) {
+                    map.put("B", map.get("B") - freeBs);
+                }
+            }
+        }
+        if (map.containsKey("F") && map.get("F").intValue() >= 3) {
+            int freeEs = map.get("F").intValue() / 3;
+            map.put("F", map.get("F") - freeEs);
+        }
 
         Set<BasketItem> basket = map.entrySet().stream()
                 .map(e -> new BasketItem(repo.getItem(e.getKey()), e.getValue().intValue()))
@@ -60,4 +70,3 @@ public class CheckliteSolution {
 
 
 }
-

@@ -1,36 +1,29 @@
 package befaster.solutions.CHL;
 
-import com.google.common.collect.Lists;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CheckliteSolutionTest {
 
-    private static CheckliteSolution checkout;
-
-    @BeforeClass
-    public static void setupShop() {
-        ShopRepo repo = new ShopRepo();
-        checkout = new CheckliteSolution(repo);
-    }
+    ShopRepo repo = new ShopRepo();
+    CheckliteSolution checkout = new CheckliteSolution(repo, new PricingImpl(repo));
 
     @Test
     public void illegalInputReturnsMinusOne() {
-        assertThat(checkout.checklite("%"), equalTo(-1));
-        assertThat(checkout.checklite("*"), equalTo(-1));
-        assertThat(checkout.checklite("="), equalTo(-1));
+        assertThat(checkout.checklite("G"), equalTo(-1));
+        assertThat(checkout.checklite("ABG"), equalTo(-1));
+        assertThat(checkout.checklite("GA"), equalTo(-1));
     }
 
     @Test
     public void properInput() {
         assertThat(checkout.checklite("A"), equalTo(50));
         assertThat(checkout.checklite("AA"), equalTo(100));
-        assertThat(checkout.checklite("AB"), equalTo(80));
         assertThat(checkout.checklite("AB"), equalTo(80));
     }
 
@@ -43,12 +36,8 @@ public class CheckliteSolutionTest {
         assertThat(checkout.checklite("AAA"), equalTo(130));
     }
 
-    @Test
-    public void failedInitially() {
-        assertThat(checkout.checklite("AAAAAAAAAA"), equalTo(400));
-    }
 
-        @Test
+    @Test
     public void properInputWithFreebies() {
         assertThat(checkout.checklite("BEE"), equalTo(80));
         assertThat(checkout.checklite("BBEE"), equalTo(110));
@@ -56,7 +45,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void properInputWithFreebies2() {
-        assertThat(checkout.checklite("FF"), equalTo(10));
+        assertThat(checkout.checklite("FF"), equalTo(20));
         assertThat(checkout.checklite("FFF"), equalTo(20));
     }
 

@@ -25,7 +25,6 @@ public class CheckliteSolution {
         if (!validInput) {
             return -1;
         }
-
         Set<BasketItem> basket = createBasket(skus);
 
         int total = 0;
@@ -71,3 +70,4 @@ public class CheckliteSolution {
 
 
 }
+

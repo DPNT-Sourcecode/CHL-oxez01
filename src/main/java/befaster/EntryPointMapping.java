@@ -2,10 +2,7 @@ package befaster;
 
 import befaster.solutions.ARRS.ArraySumSolution;
 import befaster.solutions.CHK.CheckoutSolution;
-import befaster.solutions.CHL.CheckliteSolution;
-import befaster.solutions.CHL.PricingImpl;
-import befaster.solutions.CHL.Promotion;
-import befaster.solutions.CHL.ShopRepo;
+import befaster.solutions.CHL.*;
 import befaster.solutions.FIZ.FizzBuzzSolution;
 import befaster.solutions.HLO.HelloSolution;
 import befaster.solutions.IRNG.IntRangeSolution;
@@ -44,6 +41,9 @@ class EntryPointMapping {
         checkoutSolution = new CheckoutSolution();
         ShopRepo repo = new ShopRepo();
         List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"));
+        BogofPromotion freebieForE = new BogofItem(repo.getItem("E"), 2, repo.getItem("B"), 1);
+        BogofPromotion freebieForF = new BogofItem(repo.getItem("F"), 2, repo.getItem("F"), 1);
+        List<BogofPromotion> freebies = Lists.newArrayList(freebieForE, freebieForF);
         checkliteSolution = new CheckliteSolution(repo, new PricingImpl(repo), promotions, freebies);
     }
 
@@ -79,4 +79,5 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
+
 

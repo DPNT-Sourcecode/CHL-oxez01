@@ -34,10 +34,12 @@ public class BogofItemTest {
 
     @Test
     public void correctlyAdjustsBasket() {
-        BasketItem a1 = new BasketItem(ITEM_A, 3);
-        Set<BasketItem> basket = Sets.newHashSet(a1);
+        Set<BasketItem> basketBefore = Sets.newHashSet(new BasketItem(ITEM_A, 3));
         //
-        BogofItem itemA1 = new BogofItem(ITEM_A, 2, ITEM_A, 1);
-        
+        Set<BasketItem> basketAfter = Sets.newHashSet(new BasketItem(ITEM_A, 2));
+        //
+        BogofItem bogofA = new BogofItem(ITEM_A, 2, ITEM_A, 1);
+        assertThat(bogofA.apply(basketBefore), equalTo(basketAfter));
+
     }
 }

@@ -46,13 +46,22 @@ public class MultiItemTest {
 
 
     @Test
-    public void calculateDiscountOverMinimumQuantityTwo() {
+    public void calculateDiscountMinimumQuantityTwo() {
         BasketItem a1 = new BasketItem(ITEM_A, 5);
         Set<BasketItem> basket = Sets.newHashSet(a1);
         assertThat(MULTI_A.discount(basket), equalTo(50));
     }
 
+    @Test
+    public void calculateDiscountOverMinimumQuantityTwo() {
+        // 5 + 3 + 1 == discount 70
+        BasketItem a1 = new BasketItem(ITEM_A, 9);
+        Set<BasketItem> basket = Sets.newHashSet(a1);
+        assertThat(MULTI_A.discount(basket), equalTo(70));
+    }
+
 }
+
 
 
 

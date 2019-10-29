@@ -28,4 +28,10 @@ public class BasketItem {
         BasketItem o = (BasketItem) other;
         return Objects.equals(item, o.item) && Objects.equals(quantity, o.quantity);
     }
+
+    @Override
+    public String toString() {
+        return String.format("item %s with quantity %d", item.getSku(), quantity);
+    }
 }
+

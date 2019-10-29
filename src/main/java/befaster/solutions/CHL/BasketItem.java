@@ -30,6 +30,11 @@ public class BasketItem {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(item, quantity);
+    }
+
+    @Override
     public String toString() {
         return String.format("item %s with quantity %d", item.getSku(), quantity);
     }

@@ -2,7 +2,7 @@ package befaster.solutions.CHL;
 
 import java.util.*;
 
-public class MultiItem implements Promotion {
+public class MultiItem implements VolumePromotion {
 
     private final Item item;
     private final List<Offer> offers;
@@ -80,3 +80,4 @@ public class MultiItem implements Promotion {
     }
 
 }
+

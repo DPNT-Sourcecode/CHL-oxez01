@@ -2,10 +2,7 @@ package befaster.solutions.CHL;
 
 import befaster.runner.SolutionNotImplementedException;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -14,10 +11,12 @@ public class CheckliteSolution {
 
     private final ShopRepo repo;
     private final Pricing pricing;
+    private final List<Promotion> promotions;
 
-    public CheckliteSolution(ShopRepo repo, Pricing pricing) {
+    public CheckliteSolution(ShopRepo repo, Pricing pricing, List<Promotion> promotions) {
         this.repo = repo;
         this.pricing = pricing;
+        this.promotions = promotions;
     }
 
     public Integer checklite(String skus) {
@@ -27,10 +26,9 @@ public class CheckliteSolution {
         }
         Set<BasketItem> basket = createBasket(skus);
 
-        int total = 0;
-        for (BasketItem bi : basket) {
-            total += pricing.evaluate(bi);
-        }
+        // calculate without discount
+        int total = basket.stream().map(pricing::evaluate).mapToInt(Integer::intValue).sum();
+
         return total;
     }
 
@@ -70,3 +68,4 @@ public class CheckliteSolution {
 
 
 }
+

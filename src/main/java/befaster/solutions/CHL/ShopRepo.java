@@ -2,7 +2,9 @@ package befaster.solutions.CHL;
 
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ShopRepo {
@@ -23,6 +25,8 @@ public class ShopRepo {
     static final Item ITEM_N = new Item("N", 40);
     static final Item ITEM_O = new Item("O", 10);
     static final Item ITEM_P = new Item("P", 50);
+    static final Item ITEM_Q = new Item("Q", 30);
+    static final Item ITEM_R = new Item("R", 30);
 
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
@@ -40,6 +44,9 @@ public class ShopRepo {
     //
     static final MultiItem.Offer offerP5 = new MultiItem.Offer(5, 200);
     static final MultiItem MULTI_P = new MultiItem(ITEM_P, Lists.newArrayList(offerP5));
+    //
+    static final MultiItem.Offer offerQ3 = new MultiItem.Offer(3, 80);
+    static final MultiItem MULTI_Q = new MultiItem(ITEM_Q, Lists.newArrayList(offerQ3));
 
 
     static final Map<String, Item> items = new HashMap();
@@ -62,14 +69,20 @@ public class ShopRepo {
         items.put("M", ITEM_N);
         items.put("O", ITEM_O);
         items.put("P", ITEM_P);
+        items.put("Q", ITEM_Q);
+        items.put("Q", ITEM_R);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
         multiItems.put("H", MULTI_H);
         multiItems.put("K", MULTI_K);
         multiItems.put("P", MULTI_P);
+        multiItems.put("Q", MULTI_Q);
     }
 
+    public List<Promotion> volumePromotions() {
+        return new ArrayList<>(multiItems.values());
+    }
 
     public Item getItem(String sku) {
         return items.get(sku);
@@ -80,6 +93,7 @@ public class ShopRepo {
     }
 
 }
+
 
 
 

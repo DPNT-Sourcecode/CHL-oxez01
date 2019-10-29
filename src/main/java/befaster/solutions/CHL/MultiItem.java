@@ -29,15 +29,13 @@ public class MultiItem implements Promotion {
             int quantity = bi.get().getQuantity();
             int totalDiscount = 0;
             Iterator<Offer> iterator = offers.iterator();
-
             while (iterator.hasNext()) {
                 MultiItem.Offer next = iterator.next();
                 int numberOfMultis = quantity / next.getQuantity();
                 totalDiscount += numberOfMultis * (item.getPrice() - next.getPrice());
                 quantity %= next.getQuantity();
             }
-            return total +  quantity * bi.getItem().getPrice();
-
+            return totalDiscount;
         }
         return 0;
     }
@@ -80,5 +78,6 @@ public class MultiItem implements Promotion {
     }
 
 }
+
 
 

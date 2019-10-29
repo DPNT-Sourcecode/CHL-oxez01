@@ -31,7 +31,12 @@ public class ShopRepo {
     static final Item ITEM_T = new Item("T", 20);
     static final Item ITEM_U = new Item("U", 40);
     static final Item ITEM_V = new Item("V", 50);
+    static final Item ITEM_W = new Item("W", 20);
+    static final Item ITEM_X = new Item("X", 90);
+    static final Item ITEM_Y = new Item("Y", 10);
+    static final Item ITEM_Z = new Item("Z", 50);
 
+    // volume promotions
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
     static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5));
@@ -91,6 +96,11 @@ public class ShopRepo {
         items.put("S", ITEM_S);
         items.put("T", ITEM_T);
         items.put("U", ITEM_U);
+        items.put("V", ITEM_V);
+        items.put("W", ITEM_W);
+        items.put("X", ITEM_X);
+        items.put("Y", ITEM_Y);
+        items.put("Z", ITEM_Z);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
@@ -98,6 +108,7 @@ public class ShopRepo {
         multiItems.put("K", MULTI_K);
         multiItems.put("P", MULTI_P);
         multiItems.put("Q", MULTI_Q);
+        multiItems.put("V", MULTI_V);
         //
         freebiePromotions.add(freebieForE);
         freebiePromotions.add(freebieForF);
@@ -123,6 +134,7 @@ public class ShopRepo {
     }
 
 }
+
 
 
 

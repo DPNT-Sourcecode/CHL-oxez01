@@ -17,15 +17,15 @@ public class CheckliteSolutionTest {
     public static void setupShop() {
         ShopRepo repo = new ShopRepo();
         //
-        List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"),
-                repo.getMultiItem("B"),
-                repo.getMultiItem("H"),
-                repo.getMultiItem("K"),
-                repo.getMultiItem("P"));
+//        List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"),
+//                repo.getMultiItem("B"),
+//                repo.getMultiItem("H"),
+//                repo.getMultiItem("K"),
+//                repo.getMultiItem("P"));
         //
-        BogofPromotion freebieForE = new BogofItem(repo.getItem("E"), 2, repo.getItem("B"), 1);
-        BogofPromotion freebieForF = new BogofItem(repo.getItem("F"), 2, repo.getItem("F"), 1);
-        BogofPromotion freebieForN = new BogofItem(repo.getItem("N"), 3, repo.getItem("M"), 1);
+//        BogofPromotion freebieForE = new BogofItem(repo.getItem("E"), 2, repo.getItem("B"), 1);
+//        BogofPromotion freebieForF = new BogofItem(repo.getItem("F"), 2, repo.getItem("F"), 1);
+//        BogofPromotion freebieForN = new BogofItem(repo.getItem("N"), 3, repo.getItem("M"), 1);
         List<BogofPromotion> freebies = Lists.newArrayList(freebieForE, freebieForF, freebieForN);
         checkout = new CheckliteSolution(repo, new PricingImpl(repo), promotions, freebies);
     }
@@ -67,4 +67,5 @@ public class CheckliteSolutionTest {
     }
 
 }
+
 

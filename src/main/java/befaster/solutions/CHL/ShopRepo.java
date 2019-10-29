@@ -117,7 +117,7 @@ public class ShopRepo {
         freebiePromotions.add(freebieForU);
     }
 
-    public List<Promotion> volumePromotions() {
+    public List<VolumePromotion> volumePromotions() {
         return new ArrayList<>(multiItems.values());
     }
 
@@ -134,6 +134,7 @@ public class ShopRepo {
     }
 
 }
+
 
 
 

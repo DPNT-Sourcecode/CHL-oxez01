@@ -80,4 +80,3 @@ public class MultiItem implements VolumePromotion {
     }
 
 }
-

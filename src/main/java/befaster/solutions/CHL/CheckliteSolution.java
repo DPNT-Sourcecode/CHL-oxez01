@@ -8,17 +8,15 @@ public class CheckliteSolution {
 
     private final Set<Character> validSkus;
     private final ShopRepo repo;
-    private final Pricing pricing;
     private final List<VolumePromotion> promotions;
     private final List<BogofPromotion> freebies;
 
-    public CheckliteSolution(ShopRepo repo, Pricing pricing) {
+    public CheckliteSolution(ShopRepo repo) {
         validSkus = new HashSet();
         for (char all = 'A'; all <= 'F' ; all++) {
             validSkus.add(all);
         }
         this.repo = repo;
-        this.pricing = pricing;
         this.promotions = repo.volumePromotions();
         this.freebies = repo.freebiePromotions();
     }
@@ -38,7 +36,7 @@ public class CheckliteSolution {
         final Set<BasketItem> newBasket = new HashSet<>(basket);
 
         // calculate without discount
-        int total = newBasket.stream().map(pricing::evaluate).mapToInt(Integer::intValue).sum();
+        int total = newBasket.stream().map(bi -> bi.getQuantity() * bi.getItem().getPrice()).mapToInt(Integer::intValue).sum();
 
         int totalDiscount = promotions.stream().map(i -> i.discount(newBasket)).mapToInt(Integer::intValue).sum();
 
@@ -62,4 +60,3 @@ public class CheckliteSolution {
 
 
 }
-

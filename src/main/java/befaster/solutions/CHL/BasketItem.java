@@ -34,4 +34,3 @@ public class BasketItem {
         return String.format("item %s with quantity %d", item.getSku(), quantity);
     }
 }
-

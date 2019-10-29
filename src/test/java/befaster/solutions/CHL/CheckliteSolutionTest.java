@@ -18,7 +18,7 @@ public class CheckliteSolutionTest {
     @BeforeClass
     public static void setupShop() {
         ShopRepo repo = new ShopRepo();
-        List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"));
+        List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"), repo.getMultiItem("B"));
         checkout = new CheckliteSolution(repo, new PricingImpl(repo), promotions);
     }
 
@@ -59,3 +59,4 @@ public class CheckliteSolutionTest {
     }
 
 }
+

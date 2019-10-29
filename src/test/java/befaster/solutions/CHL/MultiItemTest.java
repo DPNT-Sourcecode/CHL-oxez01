@@ -1,12 +1,20 @@
 package befaster.solutions.CHL;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import org.junit.Test;
+
+import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MultiItemTest {
+
+    static final Item ITEM_A = new Item("A", 50);
+    static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
+    static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
+    static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5));
 
     @Test
     public void checkMinimumQuantity() {
@@ -15,9 +23,20 @@ public class MultiItemTest {
         assertThat(a.minimumMultiQuantity(), equalTo(3));
     }
 
-    static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
-    static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
-    static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5));
+    @Test
+    public void calculateDiscountUnderMinimumQuantity() {
+        BasketItem a1 = new BasketItem(ITEM_A, 1);
+        Set<BasketItem> basket = Sets.newHashSet(a1);
+        assertThat(MULTI_A.discount(basket), equalTo(0));
+    }
+
+    @Test
+    public void calculateDiscountOverMinimumQuantityOne() {
+        BasketItem a1 = new BasketItem(ITEM_A, 3);
+        Set<BasketItem> basket = Sets.newHashSet(a1);
+        assertThat(MULTI_A.discount(basket), equalTo(20));
+    }
 
 }
+
 

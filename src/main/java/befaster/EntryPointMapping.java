@@ -44,7 +44,7 @@ class EntryPointMapping {
         checkoutSolution = new CheckoutSolution();
         ShopRepo repo = new ShopRepo();
         List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"));
-        checkliteSolution = new CheckliteSolution(repo, new PricingImpl(repo), promotions);
+        checkliteSolution = new CheckliteSolution(repo, new PricingImpl(repo), promotions, freebies);
     }
 
     Object sum(List<JsonElement> p) {
@@ -79,3 +79,4 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
+

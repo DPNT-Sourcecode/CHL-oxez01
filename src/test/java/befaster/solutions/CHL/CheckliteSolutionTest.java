@@ -4,9 +4,7 @@ import com.google.common.collect.Lists;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,7 +17,8 @@ public class CheckliteSolutionTest {
     public static void setupShop() {
         ShopRepo repo = new ShopRepo();
         List<Promotion> promotions = Lists.newArrayList(repo.getMultiItem("A"), repo.getMultiItem("B"));
-        checkout = new CheckliteSolution(repo, new PricingImpl(repo), promotions);
+        List<BogofPromotion> freebies = Lists.newArrayList(freebie1, freebie2);
+        checkout = new CheckliteSolution(repo, new PricingImpl(repo), promotions, freebies);
     }
 
     @Test

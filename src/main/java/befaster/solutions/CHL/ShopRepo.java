@@ -27,6 +27,9 @@ public class ShopRepo {
     static final Item ITEM_P = new Item("P", 50);
     static final Item ITEM_Q = new Item("Q", 30);
     static final Item ITEM_R = new Item("R", 50);
+    static final Item ITEM_S = new Item("S", 30);
+    static final Item ITEM_T = new Item("T", 20);
+    static final Item ITEM_U = new Item("U", 40);
 
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
     static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
@@ -52,10 +55,12 @@ public class ShopRepo {
     static final BogofPromotion freebieForE = new BogofItem(ITEM_E, 2, ITEM_B, 1);
     static final BogofPromotion freebieForF = new BogofItem(ITEM_F, 2, ITEM_F, 1);
     static final BogofPromotion freebieForN = new BogofItem(ITEM_N, 3, ITEM_M, 1);
+    static final BogofPromotion freebieForR = new BogofItem(ITEM_R, 3, ITEM_Q, 1);
 
 
     static final Map<String, Item> items = new HashMap();
     static final Map<String, MultiItem> multiItems = new HashMap();
+    static final List<BogofPromotion> freebiePromotions  = new ArrayList<>();
 
     static {
         items.put("A", ITEM_A);
@@ -76,6 +81,8 @@ public class ShopRepo {
         items.put("P", ITEM_P);
         items.put("Q", ITEM_Q);
         items.put("R", ITEM_R);
+        items.put("S", ITEM_S);
+        items.put("T", ITEM_T);
         //
         multiItems.put("A", MULTI_A);
         multiItems.put("B", MULTI_B);
@@ -83,15 +90,20 @@ public class ShopRepo {
         multiItems.put("K", MULTI_K);
         multiItems.put("P", MULTI_P);
         multiItems.put("Q", MULTI_Q);
+        //
+        freebiePromotions.add(freebieForE);
+        freebiePromotions.add(freebieForF);
+        freebiePromotions.add(freebieForN);
+        freebiePromotions.add(freebieForR);
     }
 
     public List<Promotion> volumePromotions() {
         return new ArrayList<>(multiItems.values());
     }
 
-//    public List<Promotion> freebiePromotions() {
-//        return new ArrayList<>(multiItems.values());
-//    }
+    public List<BogofPromotion> freebiePromotions() {
+        return new ArrayList<>(freebiePromotions);
+    }
 
     public Item getItem(String sku) {
         return items.get(sku);
@@ -102,6 +114,7 @@ public class ShopRepo {
     }
 
 }
+
 
 
 

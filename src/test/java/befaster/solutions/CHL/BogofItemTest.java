@@ -16,7 +16,7 @@ public class BogofItemTest {
 
     @Test
     public void equalsAndHashCodeFreebieSame() {
-        // for 2A 1 A free
+        // for 2A 1A free
         BogofItem itemA1 = new BogofItem(ITEM_A, 2, ITEM_A, 1);
         BogofItem itemA2 = new BogofItem(ITEM_A, 2, ITEM_A, 1);
         assertThat(itemA1.equals(itemA2), equalTo(true));
@@ -25,7 +25,7 @@ public class BogofItemTest {
 
     @Test
     public void equalsAndHashCodeFreebieDifferent() {
-        // for 2A 1 A free
+        // for 3A 2B free
         BogofItem itemB1 = new BogofItem(ITEM_A, 3, ITEM_B, 2);
         BogofItem itemB2 = new BogofItem(ITEM_A, 3, ITEM_B, 2);
         assertThat(itemB1.equals(itemB2), equalTo(true));
@@ -38,7 +38,7 @@ public class BogofItemTest {
         //
         Set<BasketItem> expectedBasketAfter = Sets.newHashSet(new BasketItem(ITEM_A, 2));
         Set<BasketItem> expectedBasketAfter2 = Sets.newHashSet(new BasketItem(ITEM_A, 2));
-        assertThat(expectedBasketAfter, equalTo(expectedBasketAfter2));
+        assertEquals(expectedBasketAfter, expectedBasketAfter2);
 
         //
         BogofItem bogofA = new BogofItem(ITEM_A, 2, ITEM_A, 1);

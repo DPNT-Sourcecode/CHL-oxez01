@@ -22,7 +22,7 @@ public class BogofItem implements BogofPromotion {
 
     @Override
     public Set<BasketItem> apply(Set<BasketItem> basket) {
-        Map<String, BasketItem> basketAsMap = basket.stream().collect(Collectors.toMap(i -> i.getItem().getSku(), Function.identity()));
+        Map<String, BasketItem> basketAsMap = basket.stream().collect(Collectors.toMap(i -> i.getItem().getSku(), Function.identity(), (prev, next) -> next, HashMap::new));
         if (basketAsMap.containsKey(item.getSku())) {
             BasketItem bi = basketAsMap.get(item.getSku());
             if (bi.getQuantity() >= eligibleQuantity && basketAsMap.containsKey(freebie.getSku())) {
@@ -53,3 +53,4 @@ public class BogofItem implements BogofPromotion {
         }
 
     }
+

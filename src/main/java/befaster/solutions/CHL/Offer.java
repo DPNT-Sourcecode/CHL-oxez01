@@ -6,6 +6,3 @@ public interface Offer {
 
     int dicount(Set<BasketItem> basket);
 }
-
-
-

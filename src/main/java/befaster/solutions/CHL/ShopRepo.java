@@ -14,6 +14,8 @@ public class ShopRepo {
     static final Item ITEM_E = new Item("D", 40);
     static final Item ITEM_F = new Item("F", 10);
 
+    static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
+    static final MultiItem.Offer offerA5 = new MultiItem.Offer(5, 200);
     static final MultiItem MULTI_A = new MultiItem(ITEM_A, Lists.newArrayList(offerA3, offerA5));
     //
     static final MultiItem.Offer offerB2 = new MultiItem.Offer(2, 45);
@@ -47,6 +49,3 @@ public class ShopRepo {
         return multiItems.containsKey(sku);
     }
 }
-
-
-

@@ -1,7 +1,5 @@
 package befaster.solutions.CHL;
 
-import befaster.runner.SolutionNotImplementedException;
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -29,7 +27,9 @@ public class CheckliteSolution {
         // calculate without discount
         int total = basket.stream().map(pricing::evaluate).mapToInt(Integer::intValue).sum();
 
-        return total;
+        int totalDiscount = promotions.stream().map(i -> i.discount(basket)).mapToInt(Integer::intValue).sum();
+
+        return total - totalDiscount;
     }
 
 
@@ -68,4 +68,5 @@ public class CheckliteSolution {
 
 
 }
+
 

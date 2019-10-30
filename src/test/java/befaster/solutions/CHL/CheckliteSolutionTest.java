@@ -46,6 +46,8 @@ public class CheckliteSolutionTest {
     @Test
     public void failedInitially() {
         assertThat(checkout.checklite("UUU"), equalTo(120));
+        assertThat(checkout.checklite("UUUUUUUU"), equalTo(240));
+
     }
 
         @Test
@@ -61,3 +63,4 @@ public class CheckliteSolutionTest {
     }
 
 }
+

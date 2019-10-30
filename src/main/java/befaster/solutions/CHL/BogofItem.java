@@ -26,7 +26,8 @@ public class BogofItem implements BogofPromotion {
         if (basketAsMap.containsKey(item.getSku())) {
             BasketItem bi = basketAsMap.get(item.getSku());
             if (bi.getQuantity() >= eligibleQuantity && basketAsMap.containsKey(freebie.getSku())) {
-                // if freebie in basket, subtract quantity
+                // if freebie in basket, subtract numFreebies*quantity
+                int numFreebies = bi.getQuantity() / eligibleQuantity;
                 BasketItem freebiebi = basketAsMap.get(freebie.getSku());
                 BasketItem newFreebie = new BasketItem(freebie, Math.max(0, freebiebi.getQuantity() - freebieQuantity));
                 basketAsMap.replace(freebie.getSku(), newFreebie);
@@ -53,3 +54,4 @@ public class BogofItem implements BogofPromotion {
         }
 
     }
+

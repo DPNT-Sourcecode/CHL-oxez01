@@ -45,7 +45,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void failedInitially() {
-        assertThat(checkout.checklite("AAAAAAAAAA"), equalTo(400));
+        assertThat(checkout.checklite("UUU"), equalTo(120));
     }
 
         @Test

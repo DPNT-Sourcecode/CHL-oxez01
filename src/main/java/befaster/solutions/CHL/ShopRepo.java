@@ -64,10 +64,10 @@ public class ShopRepo {
 
 
     static final BogofPromotion freebieForE = new BogofItem(ITEM_E, 2, ITEM_B, 1);
-    static final BogofPromotion freebieForF = new BogofItem(ITEM_F, 2, ITEM_F, 1);
+    static final BogofPromotion freebieForF = new BogofItem(ITEM_F, 3, ITEM_F, 1);
     static final BogofPromotion freebieForN = new BogofItem(ITEM_N, 3, ITEM_M, 1);
     static final BogofPromotion freebieForR = new BogofItem(ITEM_R, 3, ITEM_Q, 1);
-    static final BogofPromotion freebieForU = new BogofItem(ITEM_U, 3, ITEM_U, 1);
+    static final BogofPromotion freebieForU = new BogofItem(ITEM_U, 4, ITEM_U, 1);
 
 
     static final Map<String, Item> items = new HashMap();
@@ -134,3 +134,4 @@ public class ShopRepo {
     }
 
 }
+

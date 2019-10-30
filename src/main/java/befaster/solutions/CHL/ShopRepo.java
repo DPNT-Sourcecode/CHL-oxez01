@@ -13,7 +13,7 @@ public class ShopRepo {
     static final Item ITEM_B = new Item("B", 30);
     static final Item ITEM_C = new Item("C", 20);
     static final Item ITEM_D = new Item("D", 15);
-    static final Item ITEM_E = new Item("D", 40);
+    static final Item ITEM_E = new Item("E", 40);
     static final Item ITEM_F = new Item("F", 10);
     static final Item ITEM_G = new Item("G", 20);
     static final Item ITEM_H = new Item("H", 10);
@@ -35,6 +35,7 @@ public class ShopRepo {
     static final Item ITEM_X = new Item("X", 90);
     static final Item ITEM_Y = new Item("Y", 10);
     static final Item ITEM_Z = new Item("Z", 50);
+
 
     // volume promotions
     static final MultiItem.Offer offerA3 = new MultiItem.Offer(3, 130);
@@ -134,4 +135,5 @@ public class ShopRepo {
     }
 
 }
+
 

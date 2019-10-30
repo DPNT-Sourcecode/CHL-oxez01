@@ -51,7 +51,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void oneOfEveryItem() {
-        assertThat(checkout.checklite("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(120));
+        assertThat(checkout.checklite("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(965));
     }
 
         @Test
@@ -67,5 +67,6 @@ public class CheckliteSolutionTest {
     }
 
 }
+
 
 
